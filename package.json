@@ -9,6 +9,7 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "ts:check": "tsc --noEmit",
+    "ts:check:fast": "tsc --noEmit --skipLibCheck",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
