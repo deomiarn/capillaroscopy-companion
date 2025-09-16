@@ -1,5 +1,8 @@
 .next
 node_modules
-dist
 coverage
 *.log
+
+# lockfiles
+pnpm-lock.yaml
+package-lock.json
