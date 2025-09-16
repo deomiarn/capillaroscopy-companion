@@ -23,7 +23,13 @@ jobs:
         run: |
           node --version
           corepack enable
-          PNPM_VERSION=$(node -p "require('./package.json').packageManager.match(/pnpm@(.+)$/)[1]")
+          PNPM_VERSION=$(node -e "try {
+            const pkg = require('./package.json');
+            const pm = pkg.packageManager || '';
+            const match = pm.match(/^pnpm@(.+)$/);
+            if (match) { console.log(match[1]); }
+            else { console.warn('Warning: packageManager field missing or not pnpm@version, using fallback pnpm version'); console.log('8.6.12'); }
+          } catch (e) { console.warn('Warning: failed to read package.json, using fallback pnpm version'); console.log('8.6.12'); }")
           corepack prepare pnpm@${PNPM_VERSION} --activate
           pnpm --version
 
