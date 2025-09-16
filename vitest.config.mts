@@ -7,6 +7,8 @@ export default defineConfig({
     globals: true,
     // increase if screenshots/large DOM
     testTimeout: 20000,
+    passWithNoTests: true,
+    setupFiles: ["./vitest.setup.ts"],
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov"],
