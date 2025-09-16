@@ -14,21 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_TELEMETRY_DISABLED: 1
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      # Enable Corepack and pin pnpm to your repo version
+      # 1) Enable Corepack & activate the exact pnpm version from package.json
       - name: Enable Corepack / pnpm
         run: |
+          node --version
           corepack enable
           PNPM_VERSION=$(node -p "require('./package.json').packageManager.match(/pnpm@(.+)$/)[1]")
           corepack prepare pnpm@${PNPM_VERSION} --activate
           pnpm --version
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
