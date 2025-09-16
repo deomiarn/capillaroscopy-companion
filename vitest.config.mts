@@ -7,6 +7,11 @@ export default defineConfig({
     globals: true,
     // increase if screenshots/large DOM
     testTimeout: 20000,
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov"],
+      exclude: ["**/node_modules/**", "**/.next/**", "**/coverage/**", "**/vitest.setup.*"],
+    },
   },
   resolve: {
     alias: {
