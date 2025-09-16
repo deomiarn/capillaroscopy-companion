@@ -21,14 +21,15 @@ Install once (already in devDeps here; run if missing):
 
 ```bash
 pnpm dev            # http://localhost:3000
+# or
 pnpm build && pnpm start
 ```
 
 ## Linting & Formatting
 
-Auto bei Commit: Husky ruft lint-staged → ESLint --fix + Prettier.
+Auto for Commit and Push: Husky calls lint-staged → ESLint --fix + Prettier.
 
-Manuell:
+Manual:
 
 ```bash
 pnpm fix            # eslint --fix + prettier --write
@@ -39,7 +40,7 @@ pnpm format:check   # prettier --check (CI-freundlich)
 
 ## API Contract (Model API)
 
-Response (Kurzform):
+Response (Shortform):
 
 ```json
 { "TODO": "Define the expected JSON response structure from the Model API here." }
