@@ -20,11 +20,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm"
+          cache: pnpm
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
+      # Enable Corepack and pin pnpm to your repo version
+      - name: Enable Corepack / pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.15.1 --activate
+          pnpm --version
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
@@ -48,7 +51,7 @@ jobs:
           name: coverage
           path: coverage/
 
-      # Build only on pushes to main (skip on PRs for speed)
+      # Build only on pushes (skip on PR for speed)
       - name: Build
         if: github.event_name == 'push'
         run: pnpm build
