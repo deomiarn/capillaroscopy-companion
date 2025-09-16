@@ -13,6 +13,13 @@ cp .env.example .env.local   # then set values (see below)
 pnpm dev                     # http://localhost:3000
 ```
 
+## Testing
+
+```bash
+pnpm test
+pnpm test:coverage
+```
+
 ---
 
 ## Development
@@ -43,5 +50,7 @@ pnpm format:check   # prettier --check (CI-freundlich)
 Response (Shortform):
 
 ```json
-{ "TODO": "Define the expected JSON response structure from the Model API here." }
+{
+  "TODO": "Define the expected JSON response structure from the Model API here."
+}
 ```
