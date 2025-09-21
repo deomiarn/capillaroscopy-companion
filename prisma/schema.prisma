@@ -18,7 +18,7 @@ model User {
   id          Int       @id @default(autoincrement())
   name        String    @db.VarChar(100)
   userName    String    @db.VarChar(100)  @unique
-  password    String    @db.Char(60)
+  password    String    @db.VarChar(255)
   email       String    @db.VarChar(100)  @unique
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt  @map("updated_at")
